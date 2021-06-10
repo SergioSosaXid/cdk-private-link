@@ -1,7 +1,5 @@
 import * as cdk from '@aws-cdk/core';
 import * as elbv2 from '@aws-cdk/aws-elasticloadbalancingv2';
-import { IElbProps } from '../interfaces';
-import { IApplicationListener } from '@aws-cdk/aws-elasticloadbalancingv2';
 
 export class ElbHelper {
     private elb: any;
@@ -17,7 +15,6 @@ export class ElbHelper {
                 internetFacing,
             })
         }
-
     }
 
     getElb(): any {

@@ -1,16 +1,18 @@
 import * as cdk from '@aws-cdk/core';
-import {VpcLink} from '@aws-cdk/aws-apigateway';
+import {VpcLink} from '@aws-cdk/aws-apigatewayv2';
 
 export class VpcLinkHelper {
     private vpcLink: any;
     constructor(scope: cdk.Construct, name: string, props: any) {
-        const {isVpcLinkExists = false, vpcLinkId = ''} = props;
+        const {isVpcLinkExists = false, vpcLinkId = '', vpc} = props;
         if(isVpcLinkExists) {
-            this.vpcLink =  VpcLink.fromVpcLinkId(scope, 'VpcLinkStatus', vpcLinkId);
+            this.vpcLink =  VpcLink.fromVpcLinkAttributes(scope, 'VpcLinkStatus', {
+                vpcLinkId,
+                vpc
+            });
         }else {
             this.vpcLink = new VpcLink(scope,'VpcLinkStatus', {
-                vpcLinkName: 'Private VpcLink',
-                description: 'Esto es una prueba de concepto'
+                vpc
             })
         }
     }
