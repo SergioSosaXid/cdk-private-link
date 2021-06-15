@@ -23,10 +23,17 @@ export class ElbHelper {
     }
 
     getEventListener(scope: cdk.Construct, name: string, arn: string ): any {
-        this.elbListener = elbv2.ApplicationListener.fromLookup(scope, name, {
-            listenerArn: arn,
-            
-        })
+        if (arn.length === 0) {
+            const listener = this.elb.addListener('listener', { port: 80 });
+                listener.addTargets('target', {
+                port: 80,
+            })
+        }else {
+            this.elbListener = elbv2.ApplicationListener.fromLookup(scope, name, {
+                listenerArn: arn,
+                
+            })
+        }
         return this.elbListener;
     }
 }

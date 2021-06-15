@@ -36,7 +36,7 @@ export class PrivateLinkStartStack extends cdk.Stack {
       port: 80,
     });*/
 
-    const listener = elb.getEventListener(this,'ListenerGet','arn:aws:elasticloadbalancing:us-east-1:642537107330:listener/app/test-balancer/e1e8539535642d5a/a566ee4a06e667e3')
+    const listener = elb.getEventListener(this,'ListenerGet',process.env.LISTENER_ARN ? process.env.LISTENER_ARN: '')
     
     const albHttp = new HttpAlbIntegration({
       listener,
