@@ -19,7 +19,7 @@ export class PrivateLinkStartStack extends cdk.Stack {
       isElbExisting: process.env.ALB_ARN ? true:false,
       arn: process.env.ALB_ARN ? process.env.ALB_ARN : 'arn:aws:elasticloadbalancing:us-east-1:642537107330:loadbalancer/app/test-balancer/e1e8539535642d5a'
     });
-
+    
     /* const ecs = new EcsHelper(this, {
       vpc: vpcClass.getVpc(),
       securityGroupId: 'sg-0bf09b8fc51f350ed'
@@ -31,12 +31,16 @@ export class PrivateLinkStartStack extends cdk.Stack {
       vpc: vpcClass.getVpc()
     });
 
-    const listener = elb.getElb().addListener('listener', { port: 80 });
+    /*const listener = elb.getElb().addListener('listener', { port: 80 });
     listener.addTargets('target', {
       port: 80,
-    });
+    });*/
+
+    const listener = elb.getEventListener(this,'ListenerGet','arn:aws:elasticloadbalancing:us-east-1:642537107330:listener/app/test-balancer/e1e8539535642d5a/a566ee4a06e667e3')
+    
     const albHttp = new HttpAlbIntegration({
       listener,
+      vpcLink:vpcLink.getVpcLink()
     })
 
     const httpEndpoint = new HttpApi(this, 'HttpProxyPrivateApi');

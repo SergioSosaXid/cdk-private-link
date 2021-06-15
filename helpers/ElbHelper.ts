@@ -3,6 +3,7 @@ import * as elbv2 from '@aws-cdk/aws-elasticloadbalancingv2';
 
 export class ElbHelper {
     private elb: any;
+    private elbListener: any; 
     constructor(scope: cdk.Construct,name: string, props: any) {
         const { vpc,internetFacing = true, isElbExisting = false, arn = '' } = props;
         if(isElbExisting) {
@@ -19,5 +20,13 @@ export class ElbHelper {
 
     getElb(): any {
         return this.elb;
+    }
+
+    getEventListener(scope: cdk.Construct, name: string, arn: string ): any {
+        this.elbListener = elbv2.ApplicationListener.fromLookup(scope, name, {
+            listenerArn: arn,
+            
+        })
+        return this.elbListener;
     }
 }

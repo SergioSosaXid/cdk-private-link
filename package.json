@@ -9,9 +9,8 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "deploy":"cdk deploy",
     "destroy":"export $(cat .env | xargs) && cdk destroy",
-    "deploy_custom":"export $(cat .env | xargs) && cdk deploy"
+    "deploy":"export $(cat .env | xargs) && cdk deploy"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.107.0",

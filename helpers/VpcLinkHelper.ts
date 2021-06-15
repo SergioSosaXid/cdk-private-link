@@ -10,7 +10,9 @@ export class VpcLinkHelper {
                 vpcLinkId,
                 vpc
             });
+            console.log("hola")
         }else {
+            console.log("mundo")
             this.vpcLink = new VpcLink(scope,'VpcLinkStatus', {
                 vpc
             })

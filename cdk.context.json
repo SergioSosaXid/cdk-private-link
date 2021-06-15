@@ -112,5 +112,12 @@
   "security-group:account=642537107330:region=us-east-1:securityGroupId=sg-024b61417f0fa31b3": {
     "securityGroupId": "sg-024b61417f0fa31b3",
     "allowAllOutbound": false
+  },
+  "load-balancer-listener:account=642537107330:listenerArn=arn$:aws:elasticloadbalancing:us-east-1:642537107330:listener/app/test-balancer/e1e8539535642d5a/a566ee4a06e667e3:loadBalancerType=application:region=us-east-1": {
+    "listenerArn": "arn:aws:elasticloadbalancing:us-east-1:642537107330:listener/app/test-balancer/e1e8539535642d5a/a566ee4a06e667e3",
+    "listenerPort": 80,
+    "securityGroupIds": [
+      "sg-024b61417f0fa31b3"
+    ]
   }
 }
