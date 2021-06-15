@@ -1,14 +1,6 @@
-# Welcome to your CDK TypeScript project!
+# Bienvenido al proyecto de private-link en AWS con CDK
 
-This is a blank project for TypeScript development with CDK.
+## Instrucciones para correr este proyecto
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
-
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+1. Usar el comando npm run deploy, esto exportara las variables de entorno que se tienen en el .env.
+2. En el .env pueden poner los arn o id de los elementos que se requieran
